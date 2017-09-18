@@ -18,32 +18,7 @@ export default class Inicio extends Component {
       <StyleProvider style={getTheme(material)}>
       <Container>
         <CabeceraInicio hasTabs/>
-          <Tabs renderTabBar={()=> <ScrollableTab />}>
-            <Tab heading="Tab1">
-              <Tab1 />
-            </Tab>
-            <Tab heading="Tab2">
-              <Tab2 />
-            </Tab>
-            <Tab heading="Tab3">
-              <Tab3 />
-            </Tab>
-            <Tab heading="Tab4">
-              <Tab4 />
-            </Tab>
-            <Tab heading="Tab5">
-              <Tab5 />
-            </Tab>
-            <Tab heading="Tab6">
-              <Tab6 />
-            </Tab>
-            <Tab heading="Tab7">
-              <Tab7 />
-            </Tab>
-            <Tab heading="Tab8">
-              <Tab8 />
-            </Tab>
-          </Tabs>
+        
       </Container>
       </StyleProvider>
     );

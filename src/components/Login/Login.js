@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity, TextInput} from 'react-native';
 import firebase, {firebaseAuth} from '../Firebase/Firebase';
 import FBSDK, {LoginButton, AccessToken, LoginManager} from 'react-native-fbsdk';
-import {Button, Icon, Item, Input, Toast, Spinner, Label} from 'native-base';
+import {Button, Icon, Item, Input, Toast, Spinner, Label, Content} from 'native-base';
 import {Actions} from 'react-native-router-flux';
 import img from '../../assets/imgs/fondo.jpg';
 import img2 from '../../assets/imgs/planb_2.png';
@@ -96,7 +96,8 @@ class Login extends Component {
 
     return (
       <Button rounded block light style={styles.buttonIngresoF} onPress={this.facebook.bind(this)}>
-        <Text style={styles.boton}> o Iniciar con Facebook</Text>
+        <Text style={styles.boton}>
+          o Iniciar con Facebook</Text>
       </Button>
     );
   }
@@ -104,31 +105,33 @@ class Login extends Component {
   render() {
     return (
       <Image source={img} style={styles.img}>
-        <Image source={img2} style={styles.imagen}/>
+        <View>
+          <Image source={img2} style={styles.imagen}/>
 
-          <TextInput keyboardType='email-address' style={styles.input} placeholder='Correo electrónico'
-            placeholderTextColor='#000' returnKeyType='next' value={this.state.text}
-            onChangeText={email => this.setState({email})}/>
+          <View>
+            <TextInput keyboardType='email-address' style={styles.input} placeholder='Correo electrónico'
+              placeholderTextColor='#000' returnKeyType='next' value={this.state.text}
+              onChangeText={email => this.setState({email})}/>
+          </View>
 
-          <TextInput style={styles.input} placeholder='Contraseña' placeholderTextColor='#000' secureTextEntry={true}
-            value={this.state.contraseña} onChangeText={contraseña => this.setState({contraseña})}/>
+          <View style={{marginTop: 10}}>
+            <TextInput style={styles.input} placeholder='Contraseña' placeholderTextColor='#000' secureTextEntry={true}
+              value={this.state.contraseña} onChangeText={contraseña => this.setState({contraseña})}/>
+          </View>
 
-            <View style={{flexDirection: 'column', justifyContent:'center'}}>
+          {this.spinnerInicio()}
+          {this.spinnerInicioF()}
 
-            {this.spinnerInicio()}
-            {this.spinnerInicioF()}
-
+          <View style={styles.view2}>
+            <View style={styles.view3}>
+              <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite"
+                onPress={() => Actions.Registro()}>
+                <Text style={styles.text1}>Crear Cuenta</Text>
+              </Animatable.Text>
+              <TouchableOpacity onPress={() => Actions.Recover()}>
+                <Text style={styles.text}>¿Olvidaste tu Contraseña?</Text>
+              </TouchableOpacity>
             </View>
-
-        <View style={styles.view2}>
-          <View style={styles.view3}>
-            <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite"
-              onPress={() => Actions.Registro()}>
-              <Text style={styles.text1}>Crear Cuenta</Text>
-            </Animatable.Text>
-            <TouchableOpacity onPress={() => Actions.Recover()}>
-              <Text style={styles.text}>¿Olvidaste tu Contraseña?</Text>
-            </TouchableOpacity>
           </View>
         </View>
       </Image>
@@ -172,6 +175,7 @@ const styles = StyleSheet.create({
     marginLeft: 40
   },
   buttonIngreso: {
+    marginTop: 10,
     marginRight: 40,
     marginLeft: 40,
     marginBottom: 10,
@@ -187,7 +191,7 @@ const styles = StyleSheet.create({
     marginRight: 40,
     marginLeft: 40,
     marginBottom: 10,
-    backgroundColor: '#3b5998',
+    backgroundColor: '#3b5998'
   },
   buttonSpinnerF: {
     marginRight: 140,
@@ -207,8 +211,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
-    marginBottom: 10,
-    marginTop: 10
+    marginBottom: 10
   },
   font: {
     fontWeight: 'bold',
@@ -225,7 +228,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: 300,
     height: 127,
-    top: 50
+    top: -35
   },
   icon: {
     color: 'white'
