@@ -16,7 +16,7 @@ class Terminos extends Component {
       check3: false,
       check4: false,
       check5: false,
-      check6: false,
+      check6: false
     };
   }
 

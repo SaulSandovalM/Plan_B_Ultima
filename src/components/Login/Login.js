@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity, TextInput} from 'react-native';
 import firebase, {firebaseAuth} from '../Firebase/Firebase';
 import FBSDK, {LoginButton, AccessToken, LoginManager} from 'react-native-fbsdk';
 import {Button, Icon, Item, Input, Toast, Spinner, Label} from 'native-base';
 import {Actions} from 'react-native-router-flux';
-import img from '../../assets/imgs/log.jpg';
-import img2 from '../../assets/imgs/plan2.png';
+import img from '../../assets/imgs/fondo.jpg';
+import img2 from '../../assets/imgs/planb_2.png';
+import * as Animatable from 'react-native-animatable';
 
 const {FacebookAuthProvider} = firebase.auth
 
@@ -94,9 +95,8 @@ class Login extends Component {
     }
 
     return (
-      <Button rounded block iconLeft light style={styles.buttonIngresoF} onPress={this.facebook.bind(this)}>
-        <Icon name='logo-facebook' style={styles.icon}/>
-      <Text style={styles.boton}>Iniciar con Facebook</Text>
+      <Button rounded block light style={styles.buttonIngresoF} onPress={this.facebook.bind(this)}>
+        <Text style={styles.boton}> o Iniciar con Facebook</Text>
       </Button>
     );
   }
@@ -106,30 +106,29 @@ class Login extends Component {
       <Image source={img} style={styles.img}>
         <Image source={img2} style={styles.imagen}/>
 
-          {this.spinnerInicioF()}
+          <TextInput keyboardType='email-address' style={styles.input} placeholder='Correo electrónico'
+            placeholderTextColor='#000' returnKeyType='next' value={this.state.text}
+            onChangeText={email => this.setState({email})}/>
 
-          <Item rounded style={styles.inputRounded}>
-            <Input style={styles.input} placeholder='Correo electrónico' keyboardType='email-address'
-              placeholderTextColor='#ccc' returnKeyType='next' value={this.state.text}
-              onChangeText={email => this.setState({email})}/>
-          </Item>
+          <TextInput style={styles.input} placeholder='Contraseña' placeholderTextColor='#000' secureTextEntry={true}
+            value={this.state.contraseña} onChangeText={contraseña => this.setState({contraseña})}/>
 
-          <Item rounded style={styles.inputRounded}>
-            <Input style={styles.input} placeholder='Contraseña' placeholderTextColor='#ccc' secureTextEntry={true}
-              value={this.state.contraseña} onChangeText={contraseña => this.setState({contraseña})}/>
-          </Item>
+        {this.spinnerInicio()}
 
-          {this.spinnerInicio()}
+        {this.spinnerInicioF()}
 
-          <View style={styles.view2}>
+        <View style={styles.view2}>
           <View style={styles.view3}>
-            <TouchableOpacity onPress={() => Actions.Registro()}>
-              <Text style={styles.text} >¿Aún no tienes cuenta?, REGÍSTRATE</Text></TouchableOpacity>
+            <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite"
+              onPress={() => Actions.Registro()}>
+              <Text style={styles.text1}>Crear Cuenta</Text>
+            </Animatable.Text>
             <TouchableOpacity onPress={() => Actions.Recover()}>
-              <Text style={styles.text}>¿Olvidaste tu contraseña?</Text></TouchableOpacity>
+              <Text style={styles.text}>¿Olvidaste tu Contraseña?</Text>
+            </TouchableOpacity>
           </View>
         </View>
-        </Image>
+      </Image>
     );
   }
 }
@@ -165,7 +164,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
   input: {
-    color: 'black'
+    color: 'black',
+    marginRight: 40,
+    marginLeft: 40,
+    borderColor: 'gray'
   },
   buttonIngreso: {
     marginRight: 40,
@@ -213,10 +215,15 @@ const styles = StyleSheet.create({
   text: {
     color: 'white'
   },
+  text1: {
+    color: 'white',
+    fontSize: 18
+  },
   imagen: {
-    width: 180,
-    height: 62,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    width: 300,
+    height: 127,
+    top: 50
   },
   icon: {
     color: 'white'

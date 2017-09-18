@@ -4,7 +4,6 @@ import {List, ListItem, Text, Icon, Left, Body, Right} from 'native-base';
 const ACTION_TIMER = 400;
 
 export default class Contenidolis extends Component {
-
   constructor(props) {
     super(props);
     console.ignoredYellowBox = true;
@@ -26,6 +25,7 @@ export default class Contenidolis extends Component {
       toValue: 1
     }).start(this.animationActionComplete);
   }
+
   pressOn = () => {
     Animated.timing(this.state.pressAction, {
       duration: ACTION_TIMER,
@@ -36,12 +36,10 @@ export default class Contenidolis extends Component {
   borrar = () => {
     this.props.borrar(this.props.item);
   }
+
   editar=()=>{
     this.props.editFun(this.state.visibleModal);
     this.props.editKey(this.props.item);
-    console.log(this.props.item)
-
-
   }
 
   animationActionedit = () => {
@@ -76,7 +74,6 @@ export default class Contenidolis extends Component {
 
   render() {
     return (
-
       <List>
         <ListItem icon onLongPress={this.pressIn} onPress={this.pressOn}>
           <Left>
@@ -91,8 +88,6 @@ export default class Contenidolis extends Component {
           </Right>
         </ListItem>
       </List>
-
-
     );
   }
 }
