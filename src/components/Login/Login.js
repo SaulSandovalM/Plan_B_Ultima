@@ -103,8 +103,12 @@ class Login extends Component {
 
   render() {
     return (
+
       <Image source={img} style={styles.img}>
-        <Image source={img2} style={styles.imagen}/>
+
+
+        <Image source={img2} style={styles.imagen} />
+
 
           <TextInput keyboardType='email-address' style={styles.input} placeholder='Correo electrónico'
             placeholderTextColor='#000' returnKeyType='next' value={this.state.text}
@@ -131,6 +135,8 @@ class Login extends Component {
             </TouchableOpacity>
           </View>
         </View>
+
+
       </Image>
     );
   }
@@ -138,7 +144,7 @@ class Login extends Component {
 
 const styles = StyleSheet.create({
   img: {
-    justifyContent: 'space-around',
+    justifyContent: 'flex-end',
     flex: 2,
     height: null,
     width: null,
@@ -226,7 +232,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: 300,
     height: 127,
-    top: 50
+    marginBottom: 80,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   icon: {
     color: 'white'
