@@ -113,9 +113,12 @@ class Login extends Component {
           <TextInput style={styles.input} placeholder='Contraseña' placeholderTextColor='#000' secureTextEntry={true}
             value={this.state.contraseña} onChangeText={contraseña => this.setState({contraseña})}/>
 
-        {this.spinnerInicio()}
+            <View style={{flexDirection: 'column', justifyContent:'center'}}>
 
-        {this.spinnerInicioF()}
+            {this.spinnerInicio()}
+            {this.spinnerInicioF()}
+
+            </View>
 
         <View style={styles.view2}>
           <View style={styles.view3}>
