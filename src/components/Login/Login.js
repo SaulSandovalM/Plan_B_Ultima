@@ -166,8 +166,7 @@ const styles = StyleSheet.create({
   input: {
     color: 'black',
     marginRight: 40,
-    marginLeft: 40,
-    borderColor: 'gray'
+    marginLeft: 40
   },
   buttonIngreso: {
     marginRight: 40,
@@ -185,7 +184,7 @@ const styles = StyleSheet.create({
     marginRight: 40,
     marginLeft: 40,
     marginBottom: 10,
-    backgroundColor: '#3b5998'
+    backgroundColor: '#3b5998',
   },
   buttonSpinnerF: {
     marginRight: 140,

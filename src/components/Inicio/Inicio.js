@@ -34,6 +34,15 @@ export default class Inicio extends Component {
             <Tab heading="Tab5">
               <Tab5 />
             </Tab>
+            <Tab heading="Tab6">
+              <Tab6 />
+            </Tab>
+            <Tab heading="Tab7">
+              <Tab7 />
+            </Tab>
+            <Tab heading="Tab8">
+              <Tab8 />
+            </Tab>
           </Tabs>
       </Container>
       </StyleProvider>
