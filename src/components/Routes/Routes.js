@@ -6,14 +6,14 @@ import Terminos from '../Terminos/Terminos';
 import Login from '../Login/Login';
 import Log from '../Login/Log';
 import Inicio from '../Inicio/Inicio';
+import Registro from '../Login/Registro';
+import Recover from '../Login/Recover';
 // import Ingresos from '../Ingreso/Ingresos';
 // import Gastos from '../Gasto/Gastos';
 // import Ahorros from '../Ahorro/Ahorros';
 // import Perfil from '../Perfil/Perfil';
-// import Registro from '../Registro/Registro';
 // import NuevoAhorro from '../Ahorro/NuevoAhorro';
 // import Tips from '../Tips/Tips';
-// import Recover from '../Login/Recover';
 // import IngresosIntro from '../FinanzasEmpezar/IngresosIntro';
 // import GastosIntro from '../FinanzasEmpezar/GastosIntro';
 // import EditarAhorro from '../Ahorro/EditarAhorro';
@@ -29,9 +29,9 @@ const Routes = () => {
         <Scene key="Login" header={null} component={Login}/>
         <Scene key="Log" header={null} component={Log} initial/>
         <Scene key="Inicio" header={null} component={Inicio} />
-      {/*
-        <Scene key="Recover" header={null} component={Recover}/>
         <Scene key="Registro" header={null} component={Registro}/>
+        <Scene key="Recover" header={null} component={Recover}/>
+      {/*
         <Scene key="IngresosIntro" header={null} component={IngresosIntro}/>
         <Scene key="GastosIntro" header={null} component={GastosIntro}/>
         <Scene key="Ingresos" header={null} component={Ingresos}/>

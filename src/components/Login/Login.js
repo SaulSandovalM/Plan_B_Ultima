@@ -105,8 +105,7 @@ class Login extends Component {
   render() {
     return (
       <Image source={img} style={styles.img}>
-        <View>
-          <Image source={img2} style={styles.imagen}/>
+        <Image source={img2} style={styles.imagen} />
 
           <View>
             <TextInput keyboardType='email-address' style={styles.input} placeholder='Correo electrónico'
@@ -114,7 +113,7 @@ class Login extends Component {
               onChangeText={email => this.setState({email})}/>
           </View>
 
-          <View style={{marginTop: 10}}>
+          <View style={{marginTop: 15}}>
             <TextInput style={styles.input} placeholder='Contraseña' placeholderTextColor='#000' secureTextEntry={true}
               value={this.state.contraseña} onChangeText={contraseña => this.setState({contraseña})}/>
           </View>
@@ -133,7 +132,6 @@ class Login extends Component {
               </TouchableOpacity>
             </View>
           </View>
-        </View>
       </Image>
     );
   }
@@ -141,7 +139,7 @@ class Login extends Component {
 
 const styles = StyleSheet.create({
   img: {
-    justifyContent: 'space-around',
+    justifyContent: 'flex-end',
     flex: 2,
     height: null,
     width: null,
@@ -172,7 +170,8 @@ const styles = StyleSheet.create({
   input: {
     color: 'black',
     marginRight: 40,
-    marginLeft: 40
+    marginLeft: 40,
+    fontSize: 20
   },
   buttonIngreso: {
     marginTop: 10,
@@ -228,7 +227,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: 300,
     height: 127,
-    top: -35
+    marginBottom: 250,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   icon: {
     color: 'white'
