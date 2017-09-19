@@ -4,7 +4,7 @@ import firebase, {firebaseAuth} from '../Firebase/Firebase';
 import FBSDK, {LoginButton, AccessToken, LoginManager} from 'react-native-fbsdk';
 import {Button, Icon, Item, Input, Toast, Spinner, Label, Content} from 'native-base';
 import {Actions} from 'react-native-router-flux';
-import img from '../../assets/imgs/fondo.jpg';
+import img from '../../assets/imgs/fondo.png';
 import img2 from '../../assets/imgs/planb_2.png';
 import * as Animatable from 'react-native-animatable';
 
@@ -105,11 +105,10 @@ class Login extends Component {
   render() {
     return (
       <Image source={img} style={styles.img}>
-        <Image source={img2} style={styles.imagen} />
 
           <View>
             <TextInput keyboardType='email-address' style={styles.input} placeholder='Correo electrónico'
-              placeholderTextColor='#000' returnKeyType='next' value={this.state.text}
+              placeholderTextColor='#000' returnKeyType='next' value={this.state.text} autoCapitalize='none'
               onChangeText={email => this.setState({email})}/>
           </View>
 

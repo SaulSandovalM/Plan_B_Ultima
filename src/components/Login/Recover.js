@@ -44,9 +44,7 @@ class Recover extends Component {
           <Input style={styles.input} placeholder='Verificar correo' keyboardType='email-address'
             placeholderTextColor='#ccc' value={this.state.verifyCorreo}
             onChangeText={(verifyCorreo) => this.setState({verifyCorreo})}/>
-          <Icon name='checkmark-circle' style={{
-            marginRight: 10
-          }}/>
+          <Icon name='checkmark-circle' style={styles.icon}/>
         </Item>
       );
     }
@@ -56,9 +54,7 @@ class Recover extends Component {
         <Input style={styles.input} placeholder='Verificar correo' keyboardType='email-address'
           placeholderTextColor='#ccc' value={this.state.verifyCorreo}
           onChangeText={(verifyCorreo) => this.setState({verifyCorreo})}/>
-        <Icon name='close-circle' style={{
-          marginRight: 10
-        }}/>
+        <Icon name='close-circle' style={styles.icon}/>
       </Item>
     );
   }
@@ -170,12 +166,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   ingresar: {
-    color: 'white'
+    color: 'white',
+    backgroundColor: 'transparent'
   },
   imagen: {
     width: 180,
     height: 62,
     alignSelf: 'center'
+  },
+  icon: {
+    marginRight: 10
   }
 })
 
