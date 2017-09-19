@@ -88,9 +88,10 @@ class Registro extends Component {
   render() {
     return (
       <Image source={img} style={styles.img}>
-
+        
         <Image source={imagen} style={styles.imagen}/>
 
+        <View>
         <Item rounded style={styles.inputRounded}>
           <Input style={styles.input} placeholder='Correo electrónico' keyboardType='email-address'
             placeholderTextColor='#ccc' returnKeyType='next' value={this.state.correo}
@@ -110,6 +111,7 @@ class Registro extends Component {
           <TouchableOpacity onPress={this.atras.bind(this)}>
             <Text style={styles.ingresar}>¿Ya tienes cuenta?, INGRESA</Text>
           </TouchableOpacity>
+        </View>
         </View>
       </Image>
     );

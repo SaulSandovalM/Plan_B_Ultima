@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Image, TouchableOpacity, TextInput} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import firebase, {firebaseAuth} from '../Firebase/Firebase';
 import FBSDK, {LoginButton, AccessToken, LoginManager} from 'react-native-fbsdk';
 import {Button, Icon, Item, Input, Toast, Spinner, Label, Content} from 'native-base';
@@ -106,15 +106,17 @@ class Login extends Component {
     return (
       <Image source={img} style={styles.img}>
 
-          <View>
-            <TextInput keyboardType='email-address' style={styles.input} placeholder='Correo electrónico'
-              placeholderTextColor='#000' returnKeyType='next' value={this.state.text} autoCapitalize='none'
-              onChangeText={email => this.setState({email})}/>
-          </View>
+          <View style={styles.view1}>
+          <Item rounded style={styles.inputRounded}>
+            <Input style={styles.input} placeholder='Correo electrónico' keyboardType='email-address'
+              placeholderTextColor='#ccc' returnKeyType='next' value={this.state.correo} autoCapitalize='none'
+              onChangeText={correo => this.setState({correo})}/>
+          </Item>
 
-          <View style={{marginTop: 15}}>
-            <TextInput style={styles.input} placeholder='Contraseña' placeholderTextColor='#000' secureTextEntry={true}
-              value={this.state.contraseña} onChangeText={contraseña => this.setState({contraseña})}/>
+          <Item rounded style={styles.inputRounded}>
+            <Input style={styles.input} placeholder='Contraseña' placeholderTextColor='#ccc' secureTextEntry={true}
+              value={this.state.password} onChangeText={password => this.setState({password})}/>
+          </Item>
           </View>
 
           {this.spinnerInicio()}
@@ -158,6 +160,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center'
   },
+  view1: {
+    marginTop: 15
+  },
   inputRounded: {
     marginRight: 40,
     marginLeft: 40,
@@ -167,10 +172,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
   input: {
-    color: 'black',
-    marginRight: 40,
-    marginLeft: 40,
-    fontSize: 20
+    color: 'black'
   },
   buttonIngreso: {
     marginTop: 10,

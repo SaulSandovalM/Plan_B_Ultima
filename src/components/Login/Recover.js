@@ -65,6 +65,7 @@ class Recover extends Component {
 
         <Image source={imagen} style={styles.imagen}/>
 
+        <View>
         <Item rounded style={styles.inputRounded}>
           <Input style={styles.input} placeholder='Correo electrónico' keyboardType='email-address'
             placeholderTextColor='#ccc' returnKeyType='next' value={this.state.correo}
@@ -82,6 +83,7 @@ class Recover extends Component {
             <Text style={styles.ingresar}>¿Ya tienes cuenta?, INGRESA</Text>
           </TouchableOpacity>
         </View>
+      </View>
       </Image>
     );
   }
