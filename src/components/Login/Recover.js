@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import firebase, {firebaseAuth} from '../Firebase/Firebase';
 import {Button, Icon, Item, Input, Spinner, Toast} from 'native-base';
 import {Actions} from 'react-native-router-flux';
-import img from '../../assets/imgs/reg.jpg';
+import img from '../../assets/imgs/recover.jpeg';
 import imagen from '../../assets/imgs/plan2.png';
 
 class Recover extends Component {
@@ -13,6 +13,7 @@ class Recover extends Component {
     error: '',
     loading: false
   };
+
   constructor(props) {
     super(props);
     this.recover = this.recover.bind(this);
@@ -22,45 +23,40 @@ class Recover extends Component {
     Actions.pop()
   }
 
-  recover(){
+  recover() {
     const {correo, verifyCorreo} = this.state;
     this.setState({error: '', loading: true});
     if (correo == verifyCorreo && correo != null && verifyCorreo != null) {
       firebaseAuth.sendPasswordResetEmail(correo).then(function() {
         Actions.Login()
-        Toast.show({
-                  text: 'Revisa tu correo, continua los pasos',
-                  position: 'bottom',
-                  buttonText: 'OK',
-                  type: 'success'
-                })
+        Toast.show({text: 'Revisa tu correo, continua los pasos', position: 'bottom', buttonText: 'OK', type: 'success'})
       }, function(error) {
-        Toast.show({
-                  text: 'Correo inválido, verifique campos',
-                  position: 'bottom',
-                  buttonText: 'OK',
-                  type: 'danger'
-                })
+        Toast.show({text: 'Correo inválido, verifique campos', position: 'bottom', buttonText: 'OK', type: 'danger'})
       });
     }
   }
 
-  buttonCorreo(){
+  buttonCorreo() {
     const {verifyCorreo, correo} = this.state;
-    if(verifyCorreo == correo){
+    if (verifyCorreo == correo) {
       return (
-      <Item rounded success style={styles.inputRounded}>
+        <Item rounded success style={styles.inputRounded}>
+          <Input style={styles.input} placeholder='Verificar correo' keyboardType='email-address' placeholderTextColor='#ccc' value={this.state.verifyCorreo} onChangeText={(verifyCorreo) => this.setState({verifyCorreo})}/>
+          <Icon name='checkmark-circle' style={{
+            marginRight: 10
+          }}/>
+        </Item>
+      );
+    }
+
+    return (
+      <Item rounded error style={styles.inputRounded}>
         <Input style={styles.input} placeholder='Verificar correo' keyboardType='email-address' placeholderTextColor='#ccc' value={this.state.verifyCorreo} onChangeText={(verifyCorreo) => this.setState({verifyCorreo})}/>
-        <Icon name='checkmark-circle' style={{marginRight: 10}}/>
+        <Icon name='close-circle' style={{
+          marginRight: 10
+        }}/>
       </Item>
     );
-    }
-    return(
-    <Item rounded error style={styles.inputRounded}>
-      <Input style={styles.input} placeholder='Verificar correo' keyboardType='email-address' placeholderTextColor='#ccc' value={this.state.verifyCorreo} onChangeText={(verifyCorreo) => this.setState({verifyCorreo})}/>
-      <Icon name='close-circle' style={{marginRight: 10}}/>
-    </Item>
-  );
   }
 
   render() {
@@ -70,7 +66,7 @@ class Recover extends Component {
         <Image source={imagen} style={styles.imagen}/>
 
         <Item rounded style={styles.inputRounded}>
-            <Input style={styles.input} placeholder='Correo electrónico' keyboardType='email-address' placeholderTextColor='#ccc' returnKeyType='next' value={this.state.correo} onChangeText={correo => this.setState({correo})}/>
+          <Input style={styles.input} placeholder='Correo electrónico' keyboardType='email-address' placeholderTextColor='#ccc' returnKeyType='next' value={this.state.correo} onChangeText={correo => this.setState({correo})}/>
         </Item>
 
         {this.buttonCorreo()}
@@ -80,7 +76,9 @@ class Recover extends Component {
         </Button>
 
         <View style={styles.footerStyle}>
-          <TouchableOpacity onPress={this.atras.bind(this)}><Text style={styles.ingresar}>¿Ya tienes cuenta?, INGRESA</Text></TouchableOpacity>
+          <TouchableOpacity onPress={this.atras.bind(this)}>
+            <Text style={styles.ingresar}>¿Ya tienes cuenta?, INGRESA</Text>
+          </TouchableOpacity>
         </View>
       </Image>
     );

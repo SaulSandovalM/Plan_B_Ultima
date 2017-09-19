@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import firebase, {firebaseAuth} from '../Firebase/Firebase';
 import {Button, Icon, Item, Input, Spinner, Toast} from 'native-base';
 import {Actions} from 'react-native-router-flux';
-import img from '../../assets/imgs/reg.jpg';
+import img from '../../assets/imgs/registro.jpeg';
 import imagen from '../../assets/imgs/plan2.png';
 
 class Registro extends Component {
