@@ -41,20 +41,20 @@ class Recover extends Component {
     if (verifyCorreo == correo) {
       return (
         <Item rounded success style={styles.inputRounded}>
-          <Input style={styles.input} placeholder='Verificar correo' keyboardType='email-address' placeholderTextColor='#ccc' value={this.state.verifyCorreo} onChangeText={(verifyCorreo) => this.setState({verifyCorreo})}/>
-          <Icon name='checkmark-circle' style={{
-            marginRight: 10
-          }}/>
+          <Input style={styles.input} placeholder='Verificar correo' keyboardType='email-address'
+            placeholderTextColor='#ccc' value={this.state.verifyCorreo}
+            onChangeText={(verifyCorreo) => this.setState({verifyCorreo})}/>
+          <Icon name='checkmark-circle' style={styles.icon}/>
         </Item>
       );
     }
 
     return (
       <Item rounded error style={styles.inputRounded}>
-        <Input style={styles.input} placeholder='Verificar correo' keyboardType='email-address' placeholderTextColor='#ccc' value={this.state.verifyCorreo} onChangeText={(verifyCorreo) => this.setState({verifyCorreo})}/>
-        <Icon name='close-circle' style={{
-          marginRight: 10
-        }}/>
+        <Input style={styles.input} placeholder='Verificar correo' keyboardType='email-address'
+          placeholderTextColor='#ccc' value={this.state.verifyCorreo}
+          onChangeText={(verifyCorreo) => this.setState({verifyCorreo})}/>
+        <Icon name='close-circle' style={styles.icon}/>
       </Item>
     );
   }
@@ -65,8 +65,11 @@ class Recover extends Component {
 
         <Image source={imagen} style={styles.imagen}/>
 
+        <View>
         <Item rounded style={styles.inputRounded}>
-          <Input style={styles.input} placeholder='Correo electrónico' keyboardType='email-address' placeholderTextColor='#ccc' returnKeyType='next' value={this.state.correo} onChangeText={correo => this.setState({correo})}/>
+          <Input style={styles.input} placeholder='Correo electrónico' keyboardType='email-address'
+            placeholderTextColor='#ccc' returnKeyType='next' value={this.state.correo}
+            onChangeText={correo => this.setState({correo})}/>
         </Item>
 
         {this.buttonCorreo()}
@@ -80,6 +83,7 @@ class Recover extends Component {
             <Text style={styles.ingresar}>¿Ya tienes cuenta?, INGRESA</Text>
           </TouchableOpacity>
         </View>
+      </View>
       </Image>
     );
   }
@@ -164,12 +168,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   ingresar: {
-    color: 'white'
+    color: 'white',
+    backgroundColor: 'transparent'
   },
   imagen: {
     width: 180,
     height: 62,
     alignSelf: 'center'
+  },
+  icon: {
+    marginRight: 10
   }
 })
 

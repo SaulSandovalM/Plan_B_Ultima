@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "558603502686",
+    "firebase_url": "https://planb-ab808.firebaseio.com",
+    "project_id": "planb-ab808",
+    "storage_bucket": "planb-ab808.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:558603502686:android:3577c7bce2900603",
+        "android_client_info": {
+          "package_name": "com.plan_b"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "558603502686-i61smm8en0igqjj3j1u8lik9s7v2sf8f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.plan_b",
+            "certificate_hash": "dc3fe54f3921b2331368c41ffeafe057934303be"
+          }
+        },
+        {
+          "client_id": "558603502686-nqkl72vk4j6009j7m214biqqcc8mo22e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCe0Usvid9-XKJpS7dDC4VzuAP1L4n6Pfo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "558603502686-nqkl72vk4j6009j7m214biqqcc8mo22e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

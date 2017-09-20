@@ -55,7 +55,6 @@
 //         const itemsRef = firebase.database().ref('usuarios/' + uid + '/gastos');
 //         that.listenForItems(itemsRef);
 //       }
-//
 //     });
 //   }
 //   //Esto ya hace una suma de todo
@@ -71,11 +70,10 @@
 //         console.log(this.state.totI)
 //       });
 //       let pIngreso = this.state.pIngreso
-//       pIngreso= 100- this.state.pGasto;
+//       pIngreso = 100 - this.state.pGasto;
 //       this.setState({pIngreso});
 //     });
 //   }
-//
 //
 //   listenForItems(itemsRef) {
 //     //Suma cuando agregas un gasto
@@ -136,42 +134,43 @@
 //             }
 //           });
 //         }
+//       });
+//     }); //aqui termina eliminar
 //
-//     });
-//   });//aqui termina eliminar
-//
-//   //Updates sumara cuando el gasto se modifica
-//   itemsRef.on('child_changed',(b)=>{
-//     const borrado = b.val();
-//     console.log(borrado)
-//     itemsRef.once('value',(l)=>{
-//       const gast = l.val();
-//       if(l.hasChildren()){
-//         var total= 0;
-//         l.forEach(function(item){
-//           total += item.child('cantidad').val();
-//         });
-//         console.log(total)
-//         this.setState({totG:total},()=>{
+//     //Updates sumara cuando el gasto se modifica
+//     itemsRef.on('child_changed', (b) => {
+//       const borrado = b.val();
+//       console.log(borrado)
+//       itemsRef.once('value', (l) => {
+//         const gast = l.val();
+//         if (l.hasChildren()) {
+//           var total = 0;
+//           l.forEach(function(item) {
+//             total += item.child('cantidad').val();
+//           });
+//           console.log(total)
+//           this.setState({
+//             totG: total
+//           }, () => {
 //             console.log("haber que pasa")
 //             if (this.state.pIngreso !== 0) {
 //               let pGasto = this.state.pGasto;
 //               pGasto = ((this.state.totG * 100) / this.state.totI);
 //               console.log(pGasto);
-//               this.setState({pGasto}, ()=>{
+//               this.setState({
+//                 pGasto
+//               }, () => {
 //                 let pIngreso = this.state.pIngreso;
 //                 pIngreso = 100 - this.state.pGasto;
 //                 this.setState({pIngreso});
 //                 console.log(pIngreso);
 //               });
 //             }
-//         });
-//       }
-//   });
-// });//aqui termina update
-//
-//
-// }//hasta aqui
+//           });
+//         }
+//       });
+//     }); //aqui termina update
+//   } //hasta aqui
 //
 //   render() {
 //     const height = 200;
@@ -212,7 +211,14 @@
 //           <View style={styles.container}>
 //             <Text style={styles.chart_title}>ESTADISTICAS</Text>
 //             <View style={styles.view}>
-//               <Pie pieWidth={150} pieHeight={150} onItemSelected={this._onPieItemSelected} colors={Theme.colors} width={width} height={height} data={[
+//               <Pie
+//                 pieWidth={150}
+//                 pieHeight={150}
+//                 onItemSelected={this._onPieItemSelected}
+//                 colors={Theme.colors}
+//                 width={width}
+//                 height={height}
+//                 data={[
 //                 {
 //                   "number": Math.round(this.state.pIngreso),
 //                   "name": 'Ingresos'

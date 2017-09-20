@@ -70,9 +70,7 @@ class Registro extends Component {
           <Input style={styles.input} placeholder='Verificar Contraseña' secureTextEntry={true}
             placeholderTextColor='#ccc' value={this.state.verifyPassword}
             onChangeText={(verifyPassword) => this.setState({verifyPassword})}/>
-          <Icon name='checkmark-circle' style={{
-            marginRight: 10
-          }}/>
+          <Icon name='checkmark-circle' style={styles.icon}/>
         </Item>
       );
     }
@@ -82,9 +80,7 @@ class Registro extends Component {
         <Input style={styles.input} placeholder='Verificar Contraseña' secureTextEntry={true}
           placeholderTextColor='#ccc' value={this.state.verifyPassword}
           onChangeText={(verifyPassword) => this.setState({verifyPassword})}/>
-        <Icon name='close-circle' style={{
-          marginRight: 10
-        }}/>
+        <Icon name='close-circle' style={styles.icon}/>
       </Item>
     );
   }
@@ -92,9 +88,10 @@ class Registro extends Component {
   render() {
     return (
       <Image source={img} style={styles.img}>
-
+        
         <Image source={imagen} style={styles.imagen}/>
 
+        <View>
         <Item rounded style={styles.inputRounded}>
           <Input style={styles.input} placeholder='Correo electrónico' keyboardType='email-address'
             placeholderTextColor='#ccc' returnKeyType='next' value={this.state.correo}
@@ -114,6 +111,7 @@ class Registro extends Component {
           <TouchableOpacity onPress={this.atras.bind(this)}>
             <Text style={styles.ingresar}>¿Ya tienes cuenta?, INGRESA</Text>
           </TouchableOpacity>
+        </View>
         </View>
       </Image>
     );
@@ -199,12 +197,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   ingresar: {
-    color: 'black'
+    color: 'white',
+    backgroundColor: 'transparent'
   },
   imagen: {
     width: 180,
     height: 62,
     alignSelf: 'center'
+  },
+  icon: {
+    marginRight: 10
   }
 })
 
