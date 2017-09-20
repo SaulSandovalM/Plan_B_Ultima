@@ -3,6 +3,8 @@ import {Root} from 'native-base';
 import {Router, Scene} from 'react-native-router-flux';
 import Bienvenida from '../Bienvenida/Bienvenida';
 import Terminos from '../Terminos/Terminos';
+import Term from '../Terminos/TermyCond';
+import Aviso from '../Terminos/Avisos';
 import Login from '../Login/Login';
 import Log from '../Login/Log';
 import Inicio from '../Inicio/Inicio';
@@ -25,9 +27,11 @@ const Routes = () => {
     <Router>
       <Scene key="root">
         <Scene key="Bienvenida" header={null} component={Bienvenida}/>
-        <Scene key="Terminos" header={null} component={Terminos}/>
+        <Scene key="Terminos" header={null} component={Terminos} initial/>
+        <Scene key="Term" header={null} component={Term}/>
+        <Scene key="Aviso" header={null} component={Aviso} />
         <Scene key="Login" header={null} component={Login}/>
-        <Scene key="Log" header={null} component={Log} initial/>
+        <Scene key="Log" header={null} component={Log} />
         <Scene key="Inicio" header={null} component={Inicio} />
         <Scene key="Registro" header={null} component={Registro}/>
         <Scene key="Recover" header={null} component={Recover}/>
