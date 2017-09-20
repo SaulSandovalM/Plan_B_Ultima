@@ -16,7 +16,7 @@ class Terminos extends Component {
             </View>
 
             <View style={styles.view2}>
-              <Text style={styles.font}>términos y condiciones</Text>
+              <Text style={styles.font}>Términos y condiciones</Text>
             </View>
 
             <List style={styles.list}>

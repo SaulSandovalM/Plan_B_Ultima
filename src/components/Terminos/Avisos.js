@@ -35,7 +35,7 @@ export default class PDFExample extends React.Component {
 
   zoom(val = 2.1) {
     this.pdfView && setTimeout(() => {
-      this.pdfView.setNativeProps({zoom: val});
+      //this.pdfView.setNativeProps({zoom: val});
     }, 3000);
   }
 
@@ -43,7 +43,7 @@ export default class PDFExample extends React.Component {
     if (!this.state.isPdfDownload) {
       return (
         <View style={styles.container}>
-          <Text>Downloading</Text>
+          <Text>Descargando Avisos de privacidad</Text>
         </View>
       );
     }

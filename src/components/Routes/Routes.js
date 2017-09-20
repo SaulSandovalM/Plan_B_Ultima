@@ -26,8 +26,8 @@ const Routes = () => {
     <Root>
     <Router>
       <Scene key="root">
-        <Scene key="Bienvenida" header={null} component={Bienvenida}/>
-        <Scene key="Terminos" header={null} component={Terminos} initial/>
+        <Scene key="Bienvenida" header={null} component={Bienvenida}initial/>
+        <Scene key="Terminos" header={null} component={Terminos}/>
         <Scene key="Term" header={null} component={Term}/>
         <Scene key="Aviso" header={null} component={Aviso} />
         <Scene key="Login" header={null} component={Login}/>
