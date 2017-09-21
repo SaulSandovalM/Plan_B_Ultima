@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {StyleSheet, Image, TouchableOpacity} from 'react-native';
-import {Header, Right, Button, Icon} from 'native-base';
+import {Header, Right, Button, Icon, Toast} from 'native-base';
 import {Actions} from 'react-native-router-flux';
 import imgLogo from '../../assets/imgs/planb.png';
 import {firebaseAuth} from '../Firebase/Firebase';
@@ -13,7 +13,8 @@ export default class CabeceraInicio extends Component {
   }
 
   salir() {
-    firebaseAuth.signOut();
+    firebaseAuth.signOut()
+    .then(r=>Toast.show({text: 'Adios \(^_^)/', position: 'bottom', duration: 3000, type: 'success'}))
   }
 
   render() {
