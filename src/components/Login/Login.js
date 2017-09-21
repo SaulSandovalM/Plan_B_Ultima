@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import firebase, {firebaseAuth} from '../Firebase/Firebase';
-import FBSDK, {LoginButton, AccessToken, LoginManager} from 'react-native-fbsdk';
+//import FBSDK, {LoginButton, AccessToken, LoginManager} from 'react-native-fbsdk';
 import {Button, Icon, Item, Input, Toast, Spinner, Label, Content} from 'native-base';
 import {Actions} from 'react-native-router-flux';
 import img from '../../assets/imgs/fondo.png';
@@ -17,45 +17,48 @@ class Login extends Component {
     error: '',
     credential: '',
     loading: false,
-    loadingF: false
+    loadingF: false,
+    login:{correo:'', password:''}
   };
 
   constructor(props) {
     super(props);
     this.onLoginSuccess = this.onLoginSuccess.bind(this);
     this.onLoginFailed = this.onLoginFailed.bind(this);
-    this.facebook = this.facebook.bind(this);
+    //this.facebook = this.facebook.bind(this);
   }
 
-  facebook() {
-    this.setState({loadingF: true});
-    LoginManager.logInWithReadPermissions(['public_profile', 'email']).then((result) => {
-      if (result.isCancelled) {
-        return Promise.resolve('cancelled');
-      }
-      return AccessToken.getCurrentAccessToken();
-    }).then(data => {
-      // create a new firebase credential with the token
-      const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
-      // login with credential
-      return firebase.auth().signInWithCredential(credential);
-    }).then((currentUser) => {
-      if (currentUser === 'cancelled') {
-        console.log('Login cancelled');
-      } else {
-        // now signed in
-        Actions.Log();
-        Toast.show({text: 'Bienvenido', position: 'bottom', duration: 3000, type: 'success'})
-      }
-    }).catch((error) => {
-      console.log(`Login fail with error: ${error}`);
-    })
-  }
+  // facebook() {
+  //   this.setState({loadingF: true});
+  //   LoginManager.logInWithReadPermissions(['public_profile', 'email']).then((result) => {
+  //     if (result.isCancelled) {
+  //       return Promise.resolve('cancelled');
+  //     }
+  //     return AccessToken.getCurrentAccessToken();
+  //   }).then(data => {
+  //     // create a new firebase credential with the token
+  //     const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
+  //     // login with credential
+  //     return firebase.auth().signInWithCredential(credential);
+  //   }).then((currentUser) => {
+  //     if (currentUser === 'cancelled') {
+  //       console.log('Login cancelled');
+  //     } else {
+  //       // now signed in
+  //       Actions.Log();
+  //       Toast.show({text: 'Bienvenido', position: 'bottom', duration: 3000, type: 'success'})
+  //     }
+  //   }).catch((error) => {
+  //     console.log(`Login fail with error: ${error}`);
+  //   })
+  // }
 
   onButtonPress() {
-    const {email, contraseña} = this.state;
+    const {correo, password} = this.state.login;
     this.setState({error: '', loading: true});
-    firebaseAuth.signInWithEmailAndPassword(email, contraseña).then(this.onLoginSuccess).catch(this.onLoginFailed);
+    firebaseAuth.signInWithEmailAndPassword(correo, password)
+      .then(this.onLoginSuccess)
+      .catch(this.onLoginFailed);
   }
 
   onLoginFailed() {
@@ -63,7 +66,8 @@ class Login extends Component {
     Toast.show({text: 'Usuario/contraseña inválidos', position: 'bottom', buttonText: 'OK', type: 'danger'})
   }
 
-  onLoginSuccess() {
+  onLoginSuccess(r) {
+    console.log(r);
     this.setState({email: '', contraseña: '', error: '', loading: false});
     Actions.Log();
     Toast.show({text: 'Bienvenido', position: 'bottom', duration: 5000, type: 'success'})
@@ -79,28 +83,38 @@ class Login extends Component {
     }
 
     return (
-      <Button rounded block style={styles.buttonIngreso} onPress={this.onButtonPress.bind(this)}>
+      <Button
+        rounded
+        block
+        style={styles.buttonIngreso}
+        onPress={this.onButtonPress.bind(this)}>
         <Text style={styles.boton}>INGRESAR</Text>
       </Button>
     );
   }
 
-  spinnerInicioF() {
-    if (this.state.loadingF) {
-      return (
-        <Button rounded block style={styles.buttonSpinnerF}>
-          <Spinner color='white'/>
-        </Button>
-      );
-    }
+  // spinnerInicioF() {
+  //   if (this.state.loadingF) {
+  //     return (
+  //       <Button rounded block style={styles.buttonSpinnerF}>
+  //         <Spinner color='white'/>
+  //       </Button>
+  //     );
+  //   }
+  //
+  //   return (
+  //     <Button rounded block light style={styles.buttonIngresoF} onPress={this.facebook.bind(this)}>
+  //       <Text style={styles.boton}>
+  //         o Iniciar con Facebook</Text>
+  //     </Button>
+  //   );
+  // }
 
-    return (
-      <Button rounded block light style={styles.buttonIngresoF} onPress={this.facebook.bind(this)}>
-        <Text style={styles.boton}>
-          o Iniciar con Facebook</Text>
-      </Button>
-    );
-  }
+  handleChange = (field, value) => {
+    const login = this.state.login;
+    login[field] = value;
+    this.setState({login});
+  };
 
   render() {
     return (
@@ -108,19 +122,32 @@ class Login extends Component {
 
           <View style={styles.view1}>
           <Item rounded style={styles.inputRounded}>
-            <Input style={styles.input} placeholder='Correo electrónico' keyboardType='email-address'
-              placeholderTextColor='#ccc' returnKeyType='next' value={this.state.correo} autoCapitalize='none'
-              onChangeText={correo => this.setState({correo})}/>
+            <Input
+              name="correo"
+              style={styles.input}
+              placeholder='Correo electrónico'
+              keyboardType='email-address'
+              placeholderTextColor='#ccc'
+              returnKeyType='next'
+              value={this.state.correo}
+              autoCapitalize='none'
+              onChangeText={value=>this.handleChange("correo", value)}/>
           </Item>
 
           <Item rounded style={styles.inputRounded}>
-            <Input style={styles.input} placeholder='Contraseña' placeholderTextColor='#ccc' secureTextEntry={true}
-              value={this.state.password} onChangeText={password => this.setState({password})}/>
+            <Input
+              name="password"
+              style={styles.input}
+              placeholder='Contraseña'
+              placeholderTextColor='#ccc'
+              secureTextEntry={true}
+              value={this.state.password}
+              onChangeText={value=>this.handleChange("password", value)}/>
           </Item>
           </View>
 
           {this.spinnerInicio()}
-          {this.spinnerInicioF()}
+          {/*{this.spinnerInicioF()}*/}
 
           <View style={styles.view2}>
             <View style={styles.view3}>
