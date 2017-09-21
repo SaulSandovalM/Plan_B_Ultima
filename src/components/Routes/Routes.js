@@ -11,7 +11,7 @@ import Recover from '../Login/Recover';
 // import Ingresos from '../Ingreso/Ingresos';
 // import Gastos from '../Gasto/Gastos';
 // import Ahorros from '../Ahorro/Ahorros';
-// import Perfil from '../Perfil/Perfil';
+import Perfil from '../Perfil/Perfil';
 // import NuevoAhorro from '../Ahorro/NuevoAhorro';
 // import Tips from '../Tips/Tips';
 // import IngresosIntro from '../FinanzasEmpezar/IngresosIntro';
@@ -31,6 +31,7 @@ const Routes = () => {
         <Scene key="Inicio" header={null} component={Inicio} />
         <Scene key="Registro" header={null} component={Registro}/>
         <Scene key="Recover" header={null} component={Recover}/>
+        <Scene key="Perfil" header={null} component={Perfil}/>
       {/*
         <Scene key="IngresosIntro" header={null} component={IngresosIntro}/>
         <Scene key="GastosIntro" header={null} component={GastosIntro}/>
@@ -39,7 +40,6 @@ const Routes = () => {
         <Scene key="Ahorros" header={null} component={Ahorros}/>
         <Scene key="NuevoAhorro" header={null} component={NuevoAhorro}/>
         <Scene key="Tips" header={null} component={Tips}/>
-        <Scene key="Perfil" header={null} component={Perfil}/>
         <Scene key="EditarAhorro" header={null} component={EditarAhorro}/>
         <Scene key="Depositar" header={null} component={Depositar}/>*/}
       </Scene>
