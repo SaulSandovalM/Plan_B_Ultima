@@ -2,6 +2,8 @@ package com.plan_b;
 
 import android.app.Application;
 import com.facebook.react.ReactApplication;
+import com.keyee.pdfview.PDFView;
+import com.rnfs.RNFSPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.brentvatne.react.ReactVideoPackage;
 import com.facebook.react.ReactNativeHost;
@@ -42,6 +44,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new PDFView(),
+            new RNFSPackage(),
           new ReactVideoPackage(),
           new FBSDKPackage(mCallbackManager),
           new RNFirebasePackage(),  // <-- Add this line
